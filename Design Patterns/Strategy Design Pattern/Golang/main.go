@@ -25,22 +25,22 @@ func (upi UpiPayment) Pay() {
 	fmt.Println("Payment done using UPI")
 }
 
-// PaymentContext is the context that uses the strategy
-type PaymentContext struct {
+// paymentContext is the context that uses the strategy
+type paymentContext struct {
 	amount int
 	method PayStrategy
 }
 
-// NewPaymentConstructor is a constructor for PaymentContext
-func NewPaymentConstructor(amount int, method PayStrategy) *PaymentContext {
-	return &PaymentContext{
+// NewPaymentConstructor is a constructor for paymentContext
+func NewPaymentConstructor(amount int, method PayStrategy) *paymentContext {
+	return &paymentContext{
 		amount: amount,
 		method: method,
 	}
 }
 
 // Pay processes the payment using the selected strategy
-func (p *PaymentContext) Pay() {
+func (p *paymentContext) Pay() {
 	fmt.Printf("Processing payment of amount: %d\n", p.amount)
 	p.method.Pay()
 }
