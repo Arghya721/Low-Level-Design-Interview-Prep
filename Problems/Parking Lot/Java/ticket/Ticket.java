@@ -29,6 +29,14 @@ public class Ticket {
         return ps;
     }
 
+    public LocalDateTime getEntryTime() {
+        return entryTime;
+    }
+
+    public LocalDateTime getExitTime() {
+        return exitTime;
+    }
+
     public String toString() {
         return "Ticket{" +
                 "ticketID='" + ticketID + '\'' +

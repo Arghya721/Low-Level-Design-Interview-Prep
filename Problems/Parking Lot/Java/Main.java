@@ -46,7 +46,10 @@ public class Main {
             Ticket truck2Ticket = parkingLot.parkVehicle(truck2Vehicle);
             System.out.println("Truck 2 parked with ticket: " + truck2Ticket.toString());
 
-            parkingLot.unParkVehicle(car1);
+            // wait for some time to simulate parking duration
+            Thread.sleep(2000); // Simulating 2 seconds of parking
+            
+            System.out.println("Cost for Car 1: " + parkingLot.unParkVehicle(car1));            
 
             Vehicle carExtra = VehicleFactory.createVehicle(VehicleType.CAR, "CAREXTRA");
             Ticket carExtraTicket = parkingLot.parkVehicle(carExtra);
