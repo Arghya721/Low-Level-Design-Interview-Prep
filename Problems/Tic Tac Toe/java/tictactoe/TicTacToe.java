@@ -1,9 +1,8 @@
 package tictactoe;
 
-import java.util.Stack;
-
 import board.Board;
 import player.Player;
+import java.util.Stack;
 
 public class TicTacToe {
     private static volatile TicTacToe instance;
