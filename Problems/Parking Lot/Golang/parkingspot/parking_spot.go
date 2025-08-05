@@ -1,4 +1,4 @@
-package parkingSpot
+package parkingspot
 
 import (
 	"errors"

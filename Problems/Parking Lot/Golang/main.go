@@ -2,24 +2,25 @@ package main
 
 import (
 	"parking-lot/floor"
-	"parking-lot/parkingSpot"
 	"parking-lot/parkinglot"
+	"parking-lot/parkingspot"
 	"parking-lot/vehicle"
 	"sync"
+	"time"
 )
 
 func main() { // Initialize the parking lot and other components here
 	// This is where you would set up your floors, parking spots, and vehicles
 
-	carSpot1 := parkingSpot.NewCarParkingSpot("C1")
-	carSpot2 := parkingSpot.NewCarParkingSpot("C2")
-	motorcycleSpot1 := parkingSpot.NewMotorcycleParkingSpot("M1")
-	motorcycleSpot2 := parkingSpot.NewMotorcycleParkingSpot("M2")
-	truckSpot1 := parkingSpot.NewTruckParkingSpot("T1")
-	truckSpot2 := parkingSpot.NewTruckParkingSpot("T2")
+	carSpot1 := parkingspot.NewCarParkingSpot("C1")
+	carSpot2 := parkingspot.NewCarParkingSpot("C2")
+	motorcycleSpot1 := parkingspot.NewMotorcycleParkingSpot("M1")
+	motorcycleSpot2 := parkingspot.NewMotorcycleParkingSpot("M2")
+	truckSpot1 := parkingspot.NewTruckParkingSpot("T1")
+	truckSpot2 := parkingspot.NewTruckParkingSpot("T2")
 
-	floor1 := floor.NewFloor("1", []parkingSpot.ParkingSpot{carSpot1, motorcycleSpot1, truckSpot1})
-	floor2 := floor.NewFloor("2", []parkingSpot.ParkingSpot{carSpot2, motorcycleSpot2, truckSpot2})
+	floor1 := floor.NewFloor("1", []parkingspot.ParkingSpot{carSpot1, motorcycleSpot1, truckSpot1})
+	floor2 := floor.NewFloor("2", []parkingspot.ParkingSpot{carSpot2, motorcycleSpot2, truckSpot2})
 
 	parkingLot := parkinglot.GetParkingLotInstance([]floor.Floor{*floor1, *floor2})
 
@@ -30,7 +31,7 @@ func main() { // Initialize the parking lot and other components here
 	CarVehicle2 := vehicle.NewCarVehicle("CAR456")
 
 	var wg sync.WaitGroup
-	wg.Add(3) // Add the number of vehicles to be parked
+	wg.Add(2) // Add the number of vehicles to be parked
 
 	go func() {
 		defer wg.Done()
@@ -48,20 +49,19 @@ func main() { // Initialize the parking lot and other components here
 		}
 	}()
 
+	wg.Wait()
+
 	// _, err := parkingLot.ParkVehicle(TruckVehicle)
 	// if err != nil {
 	// 	println("Error parking truck:", err.Error())
 	// }
 
-	go func() {
-		CarVehicle3 := vehicle.NewCarVehicle("CAR789")
-		defer wg.Done()
-		_, err := parkingLot.ParkVehicle(CarVehicle3)
-		if err != nil {
-			println("Error parking car:", err.Error())
-		}
-	}()
-	wg.Wait()
+	time.Sleep(2 * time.Second) // Simulate some delay before unparking)
+
+	err := parkingLot.UnparkVehicle(CarVehicle2)
+	if err != nil {
+		println("Error unparking car:", err.Error())
+	}
 
 	// MotorcycleVehicle2 := vehicle.NewMotorcycleVehicle("MOTO456")
 	// _, err = parkingLot.ParkVehicle(MotorcycleVehicle2)

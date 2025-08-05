@@ -1,7 +1,7 @@
 package ticket
 
 import (
-	parkingspot "parking-lot/parkingSpot"
+	parkingspot "parking-lot/parkingspot"
 	"time"
 
 	"github.com/google/uuid"

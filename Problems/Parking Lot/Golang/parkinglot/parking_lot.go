@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"parking-lot/floor"
+	"parking-lot/payments"
 	"parking-lot/ticket"
 	"parking-lot/vehicle"
 	"sync"
@@ -81,5 +82,23 @@ func (pl *parkingLot) UnparkVehicle(v vehicle.Vehicle) error {
 	}
 	t.SetExitTime()
 	delete(pl.ActiveTickets, v.GetVehicleNumber())
+
+	// Payment Strategy Pattern
+	switch v.GetVehicleType() {
+	case vehicle.Car:
+		carPaymentStrategy := payments.NewPaymentStrategy(&payments.CarPaymentStrategy{})
+		carPaymentStrategy.Pay(t)
+		fmt.Printf("Car payment: $%.2f\n", carPaymentStrategy.Pay(t))
+	case vehicle.Motorcycle:
+		motorcyclePaymentStrategy := payments.NewPaymentStrategy(&payments.MotorCyclePaymentStrategy{})
+		motorcyclePaymentStrategy.Pay(t)
+		fmt.Printf("Motorcycle payment: $%.2f\n", motorcyclePaymentStrategy.Pay(t))
+	case vehicle.Truck:
+		truckPaymentStrategy := payments.NewPaymentStrategy(&payments.TruckPaymentStrategy{})
+		truckPaymentStrategy.Pay(t)
+		fmt.Printf("Truck payment: $%.2f\n", truckPaymentStrategy.Pay(t))
+	default:
+		return errors.New("invalid vehicle type")
+	}
 	return nil
 }
