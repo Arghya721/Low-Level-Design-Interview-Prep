@@ -144,6 +144,31 @@ This project is open source and available under the [MIT License](LICENSE).
 
 This repository is created for the developer community to prepare for technical interviews and improve software design skills. Feel free to star, fork, and share!
 
+### 🌟 Special Thanks To
+- **Open Source Community** - For inspiring the creation of educational resources
+- **Interviewers & Candidates** - Whose questions and experiences shaped this content
+- **Design Pattern Pioneers** - Gang of Four (GoF) and other software design visionaries
+- **SOLID Principles Authors** - Robert C. Martin and other thought leaders in clean code
+- **Contributors** - Everyone who has helped improve this repository
+
+### 📚 Resources That Inspired This Repository
+- "Design Patterns: Elements of Reusable Object-Oriented Software" by GoF
+- "Clean Code" by Robert C. Martin
+- "Head First Design Patterns" by Freeman & Robson
+- Various technical interview preparation materials and courses
+
+### 💪 Community Support
+- **GitHub Stars** - Your appreciation motivates continued development
+- **Issue Reports** - Helping identify areas for improvement
+- **Pull Requests** - Community contributions that make this better
+- **Discussions** - Sharing knowledge and experiences
+
+### 🎯 Future Goals
+- Add more design patterns (Adapter, Facade, Command, etc.)
+- Include more programming languages (Python, C++, JavaScript)
+- Create interactive examples and exercises
+- Build a community-driven learning platform
+
 ---
 
 **Happy Learning and Good Luck with Your Interviews! 🚀**
